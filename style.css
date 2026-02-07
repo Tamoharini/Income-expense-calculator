@@ -1,19 +1,21 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    padding: 30px;
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 h1 {
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .balance-container {
@@ -22,13 +24,16 @@ h1 {
 }
 
 .summary {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    margin: 20px 0;
+    gap: 30px;
 }
 
 .money {
-    font-size: 1.5em;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
 .money.plus {
@@ -39,55 +44,56 @@ h1 {
     color: red;
 }
 
-.filters {
-    margin: 20px 0;
-    text-align: center;
-}
-
+/* FORM FIX */
 form {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-form input {
-    margin: 0 10px;
+form input,
+form select {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    flex: 1;
+    border-radius: 6px;
 }
 
 .btn {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    padding: 10px;
     border: none;
-    border-radius: 3px;
+    border-radius: 6px;
+    color: white;
     cursor: pointer;
 }
 
 .btn.reset {
-    background-color: #dc3545;
+    background-color: #d9534f;
 }
 
+.btn:not(.reset) {
+    background-color: #007bff;
+}
+
+
 ul {
-    list-style-type: none;
     padding: 0;
+    list-style-type: none;
+    margin-top: 20px;
 }
 
 ul li {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    margin: 5px 0;
-    background: #e9ecef;
-    border-radius: 4px;
+    background: #ececec;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
 }
 
 ul li button {
     background: transparent;
     border: none;
-    cursor: pointer;
     color: red;
+    cursor: pointer;
 }
