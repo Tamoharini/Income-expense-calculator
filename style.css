@@ -66,6 +66,7 @@ form input, form select {
     background: #dc3545;
 }
 
+/* LIST STYLE */
 ul {
     list-style: none;
     padding: 0;
@@ -76,10 +77,12 @@ ul li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #e9ecef;
-    padding: 10px;
-    margin-bottom: 8px;
+    background: #eef3f8;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-left: 6px solid #007bff;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 .action-btns button {
@@ -89,5 +92,6 @@ ul li {
     cursor: pointer;
     font-size: 18px;
 }
-.action-btns .edit { color: blue; }
+.action-btns .edit { color: #007bff; }
 .action-btns .delete { color: red; }
+
