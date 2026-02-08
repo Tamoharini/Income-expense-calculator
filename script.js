@@ -12,11 +12,10 @@ const expenseDisplay = document.getElementById('money-minus');
 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 let editID = null;
 
-
 entryForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const newData = {
+    const entry = {
         id: editID || Date.now(),
         description: descriptionInput.value,
         amount: parseFloat(amountInput.value),
@@ -24,10 +23,10 @@ entryForm.addEventListener("submit", function (e) {
     };
 
     if (editID) {
-        transactions = transactions.map(t => (t.id === editID ? newData : t));
+        transactions = transactions.map(t => t.id === editID ? entry : t);
         editID = null;
     } else {
-        transactions.push(newData);
+        transactions.push(entry);
     }
 
     updateLocalStorage();
@@ -40,6 +39,7 @@ function updateLocalStorage() {
     localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
+
 function updateUI() {
     transactionsList.innerHTML = "";
 
@@ -50,22 +50,21 @@ function updateUI() {
 
     transactions
         .filter(t => filter === "all" || t.type === filter)
-        .forEach(transaction => {
-
+        .forEach(t => {
             const li = document.createElement("li");
 
             li.innerHTML = `
-                ${transaction.description} - $${transaction.amount.toFixed(2)}
+                <span>${t.description} — $${t.amount.toFixed(2)}</span>
                 <div class="action-btns">
-                    <button class="edit" onclick="editTransaction(${transaction.id})">✏️</button>
-                    <button class="delete" onclick="deleteTransaction(${transaction.id})">🗑️</button>
+                    <button class="edit" onclick="editTransaction(${t.id})">✏️</button>
+                    <button class="delete" onclick="deleteTransaction(${t.id})">🗑️</button>
                 </div>
             `;
 
             transactionsList.appendChild(li);
         });
 
-    
+
     transactions.forEach(t => {
         if (t.type === "income") totalIncome += t.amount;
         else totalExpense += t.amount;
@@ -76,6 +75,7 @@ function updateUI() {
     expenseDisplay.textContent = `$${totalExpense.toFixed(2)}`;
 }
 
+// EDIT
 function editTransaction(id) {
     const t = transactions.find(x => x.id === id);
 
